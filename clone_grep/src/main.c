@@ -6,7 +6,6 @@ typedef struct {
     int numero_linha;
     int ignorar_case;
     int contar_ocorrencias;
-    int inverter_busca;
 } Opcoes;
 
 
@@ -16,7 +15,7 @@ void minusculo(char *texto){
     }
 }
 
-void busca (char *palavra, FILE *arquivo, Opcoes opcoes){ // adicionar o inverter_busca
+void busca (char *palavra, FILE *arquivo, Opcoes opcoes){
     char linha[1000];
     int numero_linha = 1;
     int ocorrencias = 0;
@@ -69,7 +68,6 @@ int main(int argc, char *argv[]) { // argc numero de palavras escritas e *argv[]
     opcoes.numero_linha = 0;
     opcoes.ignorar_case = 0;
     opcoes.contar_ocorrencias = 0;
-    opcoes.inverter_busca = 0;
     
     for(int i = 1; i < argc; i++){
         if(strcmp(argv[i], "-n") == 0){
@@ -80,9 +78,6 @@ int main(int argc, char *argv[]) { // argc numero de palavras escritas e *argv[]
         }
         else if(strcmp(argv[i], "-c") == 0){
             opcoes.contar_ocorrencias = 1;
-        }
-        else if(strcmp(argv[i], "-v") == 0){
-            opcoes.inverter_busca = 1;
         }
         else if(palavra == NULL){
             palavra = argv[i];
